@@ -12,12 +12,14 @@ mongoose.connect(process.env.MONGODB_URL)
     .then(() => console.log("Connected to db 🔌"))
     .catch(() => console.log("Couldn't connect to db 🥸"));
 
-// middlwares = helpler functions
+// middlwares = helper functions
 app.use(cors());
 app.use(express.json());
 
 // routes
-app.use("/api/dishes", require("./routes/dish"))
+app.get("/", (req, res) => res.send("WOKRS"))
+app.use("/api/dishes", require("./routes/dish"));
+app.use("/api/users", require("./routes/user"));
 
 // port and server listening;
 const port = process.env.PORT || 5000;

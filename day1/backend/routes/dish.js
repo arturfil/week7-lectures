@@ -6,11 +6,12 @@ const {
   updateDish,
   deleteDish,
 } = require("../controllers/dishController");
+const { validateJwt } = require("../helpers/processJwt");
 
 const router = express.Router();
 
 // GET /api/dishes
-router.get("/", getAllDishes);
+router.get("/", validateJwt, getAllDishes);
 // GET api/dishes/dish/:id
 router.get("/dish/:id", getDishById);
 // POST /api/dishes/dish
