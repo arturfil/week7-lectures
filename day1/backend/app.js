@@ -19,7 +19,7 @@ app.use(express.json());
 // routes
 app.get("/", (req, res) => res.send("WOKRS"))
 app.use("/api/dishes", require("./routes/dish"));
-app.use("/api/users", require("./routes/user"));
+app.use("/api/auth", require("./routes/user"));
 
 // port and server listening;
 const port = process.env.PORT || 5000;

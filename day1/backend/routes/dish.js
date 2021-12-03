@@ -6,18 +6,20 @@ const {
   updateDish,
   deleteDish,
 } = require("../controllers/dishController");
-const { validateJwt } = require("../helpers/processJwt");
+const { validateJwt, isAdmin } = require("../helpers/processJwt");
 
 const router = express.Router();
 
 // GET /api/dishes
-router.get("/", validateJwt, getAllDishes);
+router.get("/", isAdmin, validateJwt, getAllDishes);
 // GET api/dishes/dish/:id
-router.get("/dish/:id", getDishById);
+router.get("/dish/:id", validateJwt ,getDishById);
 // POST /api/dishes/dish
-router.post("/dish", createDish);
+router.post("/dish", [
+  
+] ,createDish);
 // PUT /api/dishes/dish/:id
-router.put("/dish/:id", updateDish);
+router.put("/dish/:id", validateJwt, isAdmin, updateDish);
 // DELETE /api/dishes/dish/:id
 router.delete("/dish/:id", deleteDish);
 
