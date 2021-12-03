@@ -7,11 +7,12 @@ const {
   updateMeeting,
   deleteMeeting,
 } = require("../controllers/meetingController");
+const { validateJwt } = require("../helpers/processJwt");
 
-router.get("/", getAllMeetings);
-router.get("/meeting/:id", getMeetingById);
-router.post("/meeting", createMeeting);
-router.put("/meeting/:id", updateMeeting);
-router.delete("/meeting/:id", deleteMeeting);
+router.get("/", validateJwt, getAllMeetings);
+router.get("/meeting/:id", validateJwt, getMeetingById);
+router.post("/meeting", validateJwt, createMeeting);
+router.put("/meeting/:id", validateJwt, updateMeeting);
+router.delete("/meeting/:id", validateJwt, deleteMeeting);
 
 module.exports = router;

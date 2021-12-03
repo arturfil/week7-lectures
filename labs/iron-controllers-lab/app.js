@@ -11,7 +11,7 @@ mongoose.connect(process.env.MONGODB_URL)
 
 app.use(express.json()); // this is for parsing in the req.body
 
-app.use("/api/users", require("./routes/user"));
+app.use("/api/auth", require("./routes/user"));
 app.use("/api/meetings", require("./routes/meeting"));
 
 const port = process.env.PORT;
